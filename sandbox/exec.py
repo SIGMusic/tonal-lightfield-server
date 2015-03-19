@@ -1,5 +1,5 @@
 import sys
-import manager
+# import manager
 
 # TODO: sandbox this. This is bad.
 exec sys.stdin
