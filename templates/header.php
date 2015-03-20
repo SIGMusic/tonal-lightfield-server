@@ -149,6 +149,31 @@
                         </ul>
                     </div>
                     <br>
+                    Font size:
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span id="font-size-value">11</span>pt
+                            <span class="caret"></span>
+                        </button>
+                        <ul id="font-size-dropdown" class="dropdown-menu" role="menu">
+                            <li><a href="#">8</a></li>
+                            <li><a href="#">9</a></li>
+                            <li><a href="#">10</a></li>
+                            <li><a href="#">11</a></li>
+                            <li><a href="#">12</a></li>
+                            <li><a href="#">13</a></li>
+                            <li><a href="#">14</a></li>
+                            <li><a href="#">16</a></li>
+                            <li><a href="#">18</a></li>
+                            <li><a href="#">20</a></li>
+                            <li><a href="#">24</a></li>
+                            <li><a href="#">28</a></li>
+                            <li><a href="#">32</a></li>
+                            <li><a href="#">36</a></li>
+                            <li><a href="#">48</a></li>
+                        </ul>
+                    </div>
+                    <br>
                     Indent size:
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

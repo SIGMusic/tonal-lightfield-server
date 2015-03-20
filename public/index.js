@@ -22,6 +22,7 @@ function setupEditor() {
             styleActiveLine: options.highlightCurrentLine,
         }
     );
+    $(".CodeMirror, #output").css("font-size", options.fontSize + "pt");
 }
 
 //Restore options
@@ -39,6 +40,13 @@ function restoreOptions() {
         options.keybinding = "default";
     }
     $("#keybinding-name").text(options.keybinding);
+
+    //Font size
+    options.indentSize = parseInt(localStorage["fontSize"]);
+    if (isNaN(options.fontSize)) {
+        options.indentSize = 11;
+    }
+    $("#font-size-value").text(options.fontSize);
 
     //Indent size
     options.indentSize = parseInt(localStorage["indentSize"]);
@@ -105,6 +113,13 @@ $("#keybinding-dropdown a").click(function(e) {
     editor.setOption("keyMap", keybinding);
     localStorage["keybinding"] = keybinding;
     $("#keybinding-name").text(keybinding);
+});
+
+$("#font-size-dropdown a").click(function(e) {
+    var fontSize = e.target.innerHTML;
+    $(".CodeMirror, #output").css("font-size", fontSize + "pt");
+    localStorage["fontSize"] = fontSize;
+    $("#font-size-value").text(fontSize);
 });
 
 $("#indent-size-dropdown a").click(function(e) {
