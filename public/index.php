@@ -1,8 +1,12 @@
 <?php include "../templates/header.php"; ?>
-<form action="submit.php" method="POST" class="container-fluid">
-    Enter your Python script below.
-    <textarea name="code" id="code" class="form-control" rows="16"></textarea>
-    <br>
-    <input type="submit" class="btn btn-primary" value="Run" />
-</form>
+
+<div class="container-fluid">
+    <textarea name="code" id="code" class="form-control"></textarea>
+</div>
+
+<div class="container-fluid" id="output-container">
+    <span class="label label-primary">Output</span>
+    <pre id="output"></pre>
+</div>
+
 <?php include "../templates/footer.php"; ?>
