@@ -176,3 +176,4 @@ $("#highlight-current-line-checkbox").on("change", function(e) {
 //Initialization
 restoreOptions();
 setupEditor();
+
