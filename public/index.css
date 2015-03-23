@@ -7,8 +7,29 @@ body {
     height: 100%;
 }
 
-.CodeMirror {
+#code-row {
     height: 50%;
+}
+
+#out-row {
+    position: fixed;
+    top: calc(50% + 25px);
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.col-md-12, .col-xs-12 {
+    padding: 0;
+    position: fixed;
+    top: 50px;
+    bottom: calc(50% - 25px);
+    left: 0;
+    right: 0;
+}
+
+.CodeMirror {
+    height: calc(50% - 25px);
     position: fixed;
     top: 50px;
     bottom: 0;
@@ -16,16 +37,17 @@ body {
     left: 0;
 }
 
-#output-container {
-    position: absolute;
-    top: calc(50px + 50%);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 0;
+.col-md-6 {
+    height: 100%;
 }
 
-#output {
+@media (max-width: 992px) {
+    .col-md-6 {
+        height: 50%;
+    }
+}
+
+#output, #errors {
     border-radius: 0;
     margin: 0;
     height: 100%;
@@ -33,7 +55,16 @@ body {
 
 .label {
     position: absolute;
-    right: 11px;
+    right: 26px;
     top: 11px;
     font-size: 1em;
+}
+
+#loading-message, #error-message {
+    display: none;
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    margin-bottom: 0;
 }

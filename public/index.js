@@ -10,6 +10,7 @@ function setupEditor() {
         document.getElementById("code"),
         {
             autofocus: true,
+            inputStyle: "textarea",
             theme: options.theme,
             keyMap: options.keybinding,
             indentUnit: options.indentSize,
@@ -88,6 +89,8 @@ function restoreOptions() {
 
 //Event listeners
 $("#run-button").click(function() {
+    $("#error-message").hide();
+    $("#loading-message").show();
     $.ajax({
         type: "POST",
         url: "run.php",
@@ -95,8 +98,23 @@ $("#run-button").click(function() {
             code: editor.getValue()
         },
         success: function(data) {
-            $("#output").text(data);
-        }
+            $("#loading-message").hide();
+            var parsed = $.parseJSON(data);
+            $("#output").text(parsed.stdout);
+            $("#errors").text(parsed.stderr);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            $("#loading-message").hide();
+            var errorMessage = "An error occurred: ";
+            if (errorThrown) {
+                //HTTP error
+                errorMessage += errorThrown;
+            } else {
+                //AJAX error
+                errorMessage += textStatus;
+            }
+            $("#error-message").text(errorMessage).show();
+        },
     });
 });
 
