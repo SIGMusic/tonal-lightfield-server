@@ -47,11 +47,17 @@ class Light:
         # Should be using L2CAP because it is similar to UDP,
         # but it's only available on Linux. We want it to transmit RGB
         # data in real time, dropping packets if necessary. Order matters.
-        # port = bt.get_available_port(bt.L2CAP) # Deprecated
         port = 1
-
-        # Create the socket
-        sock = bt.BluetoothSocket(bt.RFCOMM)
+        sock = None
+        try:
+            port = 0x1001
+            # Create the socket
+            sock = bt.BluetoothSocket(bt.L2CAP)
+            print("Using L2CAP")
+        except:
+            port = 1
+            # Create the socket
+            sock = bt.BluetoothSocket(bt.RFCOMM)
         
         # Attempt to connect
         try:
