@@ -9,12 +9,6 @@
             <div class="alert alert-info" role="alert" id="loading-message">
                 Running...
             </div>
-            <div class="alert alert-danger alert-dismissible" role="alert" id="error-message">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                Error!
-            </div>
         </div>
     </div>
     <div class="row" id="out-row">

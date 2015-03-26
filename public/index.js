@@ -89,7 +89,7 @@ function restoreOptions() {
 
 //Event listeners
 $("#run-button").click(function() {
-    $("#error-message").hide();
+    $("#error-message").remove();
     $("#loading-message").show();
     $.ajax({
         type: "POST",
@@ -105,6 +105,7 @@ $("#run-button").click(function() {
         },
         error: function(xhr, textStatus, errorThrown) {
             $("#loading-message").hide();
+
             var errorMessage = "An error occurred: ";
             if (errorThrown) {
                 //HTTP error
@@ -113,7 +114,23 @@ $("#run-button").click(function() {
                 //AJAX error
                 errorMessage += textStatus;
             }
-            $("#error-message").text(errorMessage).show();
+
+            var errorAlert = document.createElement("div");
+            $(errorAlert).addClass("alert alert-danger alert-dismissible")
+                .attr({
+                    "id": "error-message",
+                    "role": "alert",
+                });
+            var closeButton = document.createElement("button");
+            $(closeButton).addClass("close")
+                .attr({
+                    "type": "button",
+                    "data-dismiss": "alert",
+                }).html("&times;");
+            var errorText = document.createTextNode(errorMessage);
+            $(errorAlert).append([closeButton, errorText]).show();
+            console.log(errorAlert);
+            $("#code-row > div").append(errorAlert);
         },
     });
 });
