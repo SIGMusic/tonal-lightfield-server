@@ -114,43 +114,41 @@ $("#run-button").click(function() {
                 $("#output").text(parsed.stdout);
             };
             return xhr;
-        },
-        success: function(data) {
-            // console.log(data);
-            $("#loading-message").hide();
-            var parsed = $.parseJSON(data);
-            $("#output").text(parsed.stdout);
-            $("#errors").text(parsed.stderr);
-        },
-        error: function(xhr, textStatus, errorThrown) {
-            $("#loading-message").hide();
+        }
+    }).done(function(data) {
+        // console.log(data);
+        $("#loading-message").hide();
+        var parsed = $.parseJSON(data);
+        $("#output").text(parsed.stdout);
+        $("#errors").text(parsed.stderr);
+    }).fail(function(xhr, textStatus, errorThrown) {
+        $("#loading-message").hide();
 
-            var errorMessage = "An error occurred: ";
-            if (errorThrown) {
-                //HTTP error
-                errorMessage += errorThrown;
-            } else {
-                //AJAX error
-                errorMessage += textStatus;
-            }
+        var errorMessage = "An error occurred: ";
+        if (errorThrown) {
+            //HTTP error
+            errorMessage += errorThrown;
+        } else {
+            //AJAX error
+            errorMessage += textStatus;
+        }
 
-            var errorAlert = document.createElement("div");
-            $(errorAlert).addClass("alert alert-danger alert-dismissible")
-                .attr({
-                    "id": "error-message",
-                    "role": "alert",
-                });
-            var closeButton = document.createElement("button");
-            $(closeButton).addClass("close")
-                .attr({
-                    "type": "button",
-                    "data-dismiss": "alert",
-                }).html("&times;");
-            var errorText = document.createTextNode(errorMessage);
-            $(errorAlert).append([closeButton, errorText]).show();
-            console.log(errorAlert);
-            $("#code-row > div").append(errorAlert);
-        },
+        var errorAlert = document.createElement("div");
+        $(errorAlert).addClass("alert alert-danger alert-dismissible")
+            .attr({
+                "id": "error-message",
+                "role": "alert",
+            });
+        var closeButton = document.createElement("button");
+        $(closeButton).addClass("close")
+            .attr({
+                "type": "button",
+                "data-dismiss": "alert",
+            }).html("&times;");
+        var errorText = document.createTextNode(errorMessage);
+        $(errorAlert).append([closeButton, errorText]).show();
+        console.log(errorAlert);
+        $("#code-row > div").append(errorAlert);
     });
 });
 
