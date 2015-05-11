@@ -37,8 +37,21 @@ body {
     left: 0;
 }
 
+#code-row.full .col-md-12, #code-row.full .col-xs-12 {
+    bottom: 0;
+}
+
+#code-row.full .CodeMirror {
+    height: 100%;
+}
+
 .col-md-6 {
     height: 100%;
+    padding: 0;
+}
+
+#out-row {
+    margin: 0;
 }
 
 @media (max-width: 992px) {
@@ -55,7 +68,7 @@ body {
 
 .label {
     position: absolute;
-    right: 26px;
+    right: 12px;
     top: 11px;
     font-size: 1em;
 }

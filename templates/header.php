@@ -1,3 +1,8 @@
+<?php
+$title = "Lights Scripting IDE";
+$short_title = "Lights Scripting";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>Light Scripting</title>
+    <title><?php echo $title ?></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
@@ -78,16 +83,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Lights Scripting</a>
+                <a class="navbar-brand" href="#"><?php echo $short_title ?></a>
             </div>
 
             <!-- Collect nav items on small screens -->
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <!-- <li><a href="#" id="load-button">Load</a></li>
-                    <li><a href="#" id="save-button">Save</a></li>
-                    <li><a href="#" id="simulate-button"><span class="glyphicon glyphicon-check"></span> Simulate</a></li> -->
+                    <!-- <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            File <span class="glyphicon glyphicon-triangle-bottom"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu"> -->
+                            <!-- <li><a href="#" id="load-button">
+                                <span class="glyphicon glyphicon-folder-open"></span> Load
+                            </a></li>
+                            <li><a href="#" id="save-button">
+                                <span class="glyphicon glyphicon-floppy-disk"></span> Save
+                            </a></li> -->
+                        <!-- </ul>
+                    </li> -->
+                    <!-- <li><a href="#" id="simulate-button"><span class="glyphicon glyphicon-check"></span> Simulate</a></li> -->
                     <li><a href="#" id="run-button"><span class="glyphicon glyphicon-play"></span> Run</a></li>
+                    <li><a href="#" id="output-button"><span class="glyphicon glyphicon-console"></span> Toggle Output</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#options-modal"><span class="glyphicon glyphicon-cog"></span> Options</a></li>
                     <li><a href="help.html" target="_blank"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
                 </ul>

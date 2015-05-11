@@ -152,6 +152,11 @@ $("#run-button").click(function() {
     });
 });
 
+$("#output-button").click(function() {
+    $("#out-row").toggle();
+    $("#code-row").toggleClass("full");
+});
+
 //Options
 $("#theme-dropdown a").click(function(e) {
     var theme = e.target.innerHTML;
