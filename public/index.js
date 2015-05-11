@@ -26,8 +26,22 @@ function setupEditor() {
     $(".CodeMirror, #output").css("font-size", options.fontSize + "pt");
 }
 
+function showHideOutput() {
+    if (showOutput) {
+        $("#out-row").show();
+        $("#code-row").removeClass("full");
+    } else {
+        $("#out-row").hide();
+        $("#code-row").addClass("full");
+    }
+}
+
 //Restore options
 function restoreOptions() {
+    //Show output
+    showOutput = localStorage["showOutput"] == "false" ? false : true;
+    showHideOutput();
+
     //Theme
     options.theme = localStorage["theme"];
     if (options.theme == undefined) {
@@ -153,8 +167,9 @@ $("#run-button").click(function() {
 });
 
 $("#output-button").click(function() {
-    $("#out-row").toggle();
-    $("#code-row").toggleClass("full");
+    showOutput = !showOutput;
+    localStorage["showOutput"] = showOutput;
+    showHideOutput();
 });
 
 //Options

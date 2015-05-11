@@ -106,7 +106,7 @@ $short_title = "Lights Scripting";
                     <li><a href="#" id="run-button"><span class="glyphicon glyphicon-play"></span> Run</a></li>
                     <li><a href="#" id="output-button"><span class="glyphicon glyphicon-console"></span> Toggle Output</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#options-modal"><span class="glyphicon glyphicon-cog"></span> Options</a></li>
-                    <li><a href="help.html" target="_blank"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
+                    <li><a href="https://github.com/SIGMusic/tonal-lightfield-server/wiki/Light-Scripting-Help" target="_blank"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
                 </ul>
             </div>
         </div>
