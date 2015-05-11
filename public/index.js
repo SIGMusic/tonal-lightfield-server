@@ -102,11 +102,13 @@ $("#run-button").click(function() {
         xhr: function() {
             var xhr = $.ajaxSettings.xhr();
             xhr.onprogress = function(e) {
-                console.log("Streamed data:", e.currentTarget.responseText);
+                //Part of the response is ready to be processed
                 var parsed;
                 try {
+                    //See if the whole response is here yet
                     parsed = $.parseJSON(e.currentTarget.responseText);
                 } catch(error) {
+                    //Nope. Add "} to make it valid JSON.
                     parsed = $.parseJSON(e.currentTarget.responseText + "\"}");
                 }
                 $("#output").text(parsed.stdout);
@@ -114,7 +116,7 @@ $("#run-button").click(function() {
             return xhr;
         },
         success: function(data) {
-            console.log(data);
+            // console.log(data);
             $("#loading-message").hide();
             var parsed = $.parseJSON(data);
             $("#output").text(parsed.stdout);
