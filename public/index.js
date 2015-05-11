@@ -91,13 +91,30 @@ function restoreOptions() {
 $("#run-button").click(function() {
     $("#error-message").remove();
     $("#loading-message").show();
+    $("#output").empty();
+    $("#errors").empty();
     $.ajax({
         type: "POST",
         url: "run.php",
         data: {
             code: editor.getValue()
         },
+        xhr: function() {
+            var xhr = $.ajaxSettings.xhr();
+            xhr.onprogress = function(e) {
+                console.log("Streamed data:", e.currentTarget.responseText);
+                var parsed;
+                try {
+                    parsed = $.parseJSON(e.currentTarget.responseText);
+                } catch(error) {
+                    parsed = $.parseJSON(e.currentTarget.responseText + "\"}");
+                }
+                $("#output").text(parsed.stdout);
+            };
+            return xhr;
+        },
         success: function(data) {
+            console.log(data);
             $("#loading-message").hide();
             var parsed = $.parseJSON(data);
             $("#output").text(parsed.stdout);
