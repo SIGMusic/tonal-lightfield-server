@@ -182,6 +182,7 @@ $("#save-button").click(function() {
         if (file == null) {
             return;
         }
+        $("#filename").text(file);
     }
     $.ajax({
         type: "POST",
