@@ -166,6 +166,33 @@ $("#run-button").click(function() {
     });
 });
 
+$("#load-dropdown a").click(function(e) {
+    //TODO: if contents are modified, ask user if they want to save
+    var file = e.target.innerHTML;
+    $("#filename").text(file);
+    $.ajax("scripts/" + file).done(function(data) {
+        editor.setValue(data);
+    });
+});
+
+$("#save-button").click(function() {
+    var file = $("#filename").text();
+    if (file == "untitled") {
+        file = prompt("Enter a filename:");
+        if (file == null) {
+            return;
+        }
+    }
+    $.ajax({
+        type: "POST",
+        url: "save.php",
+        data: {
+            filename: file,
+            code: editor.getValue()
+        }
+    });
+});
+
 $("#output-button").click(function() {
     showOutput = !showOutput;
     localStorage["showOutput"] = showOutput;

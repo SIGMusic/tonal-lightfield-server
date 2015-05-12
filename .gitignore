@@ -1,1 +1,3 @@
 *.pyc
+public/scripts/*
+!public/scripts/.htaccess

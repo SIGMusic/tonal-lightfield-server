@@ -89,25 +89,34 @@ $short_title = "Lights Scripting";
             <!-- Collect nav items on small screens -->
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <!-- <li class="dropdown">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            File <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            <span class="glyphicon glyphicon-folder-open"></span> Load
+                            <span class="glyphicon glyphicon-triangle-bottom"></span>
                         </a>
-                        <ul class="dropdown-menu" role="menu"> -->
-                            <!-- <li><a href="#" id="load-button">
-                                <span class="glyphicon glyphicon-folder-open"></span> Load
-                            </a></li>
-                            <li><a href="#" id="save-button">
-                                <span class="glyphicon glyphicon-floppy-disk"></span> Save
-                            </a></li> -->
-                        <!-- </ul>
-                    </li> -->
+                        <ul id="load-dropdown" class="dropdown-menu" role="menu">
+<?php
+function filter_py($var) {
+    return fnmatch("*.py", $var);
+}
+
+$dirlist = scandir("scripts");
+$filtered = array_filter($dirlist, filter_py);
+
+foreach($filtered as $file) {
+    echo "<li><a href='#'>$file</a></li>";
+}
+?>
+                        </ul>
+                    </li>
+                    <li><a href="#" id="save-button"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a></li>
                     <!-- <li><a href="#" id="simulate-button"><span class="glyphicon glyphicon-check"></span> Simulate</a></li> -->
                     <li><a href="#" id="run-button"><span class="glyphicon glyphicon-play"></span> Run</a></li>
                     <li><a href="#" id="output-button"><span class="glyphicon glyphicon-console"></span> Toggle Output</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#options-modal"><span class="glyphicon glyphicon-cog"></span> Options</a></li>
                     <li><a href="https://github.com/SIGMusic/tonal-lightfield-server/wiki/Light-Scripting-Help" target="_blank"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
                 </ul>
+                <p id="filename" class="navbar-text navbar-right">untitled</p>
             </div>
         </div>
     </nav>

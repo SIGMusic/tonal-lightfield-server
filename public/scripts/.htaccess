@@ -1,0 +1,7 @@
+Options -Indexes -ExecCGI
+
+order allow,deny
+deny from all
+<Files ~ "\.py$">
+   allow from all
+</Files>
