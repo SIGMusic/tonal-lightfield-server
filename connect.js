@@ -21,6 +21,7 @@ function connectSocket() {
 
     ws.onclose = function() {
         $("#connection-status").text("not connected");
+        $("#connect-socket").text("Connect");
     };
 }
 
@@ -39,7 +40,6 @@ $("#test-lights").on("click", function() {
 $("#connect-socket").on("click", function() {
     if (ws.readyState == WebSocket.OPEN) {
         ws.close();
-        $("#connect-socket").text("Connect");
     } else {
         connectSocket();
     }
